@@ -26,7 +26,7 @@ class ShoppingCartTest extends AnyFlatSpec with Matchers {
   }
 
   it should "calculate cost for 7 items with promotion" in {
-    cartNoPromo.scanItems(Seq(Apple, Orange, Apple, Apple, Orange, Orange, Orange)) shouldBe 120 + 75
+    cartWithPromo.scanItems(Seq(Apple, Orange, Apple, Apple, Orange, Orange, Orange)) shouldBe 120 + 75
   }
 
 }
