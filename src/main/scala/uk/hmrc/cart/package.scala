@@ -14,4 +14,11 @@ package object cart {
     override val costInPence: Int = 25
   }
 
+  sealed trait Offer
+  case object NoPromo extends Offer
+  case object BuyOneGetOneFree extends Offer
+  case object ThreeForTwo extends Offer
+
+  case class Promo(item: Item, offer:Offer)
+
 }
