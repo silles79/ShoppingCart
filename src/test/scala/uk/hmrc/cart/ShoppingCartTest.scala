@@ -5,8 +5,8 @@ import org.scalatest.matchers.should.Matchers
 
 class ShoppingCartTest extends AnyFlatSpec with Matchers {
 
-  val cartNoPromo = ShoppingCart()
-  val cartWithPromo = ShoppingCart(
+  private val cartNoPromo: ShoppingCart = ShoppingCart()
+  private val cartWithPromo: ShoppingCart = ShoppingCart(
     Seq(
       Promo(item = Apple, offer = BuyOneGetOneFree),
       Promo(item = Orange, offer = ThreeForTwo)
@@ -27,6 +27,10 @@ class ShoppingCartTest extends AnyFlatSpec with Matchers {
 
   it should "calculate cost for 7 items with promotion" in {
     cartWithPromo.scanItems(Seq(Apple, Orange, Apple, Apple, Orange, Orange, Orange)) shouldBe 120 + 75
+  }
+
+  it should "calculate cost for only apples with promotion" in {
+    cartWithPromo.scanItems(Seq(Apple, Apple, Apple, Apple)) shouldBe 120
   }
 
 }
